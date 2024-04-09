@@ -184,7 +184,7 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" onclick="Logout()" href="javascript:void(0)"><i data-feather="power"
                     class="svg-icon me-2 ms-1"></i>
-                  Logout</a>
+                  Sign Out</a>
 
                             </div>
                         </li>
@@ -237,7 +237,7 @@
                   href="javascript:void(0)"
                   aria-expanded="false"
                   ><i data-feather="log-out" class="feather-icon"></i
-                  ><span class="hide-menu">Logout</span></a
+                  ><span class="hide-menu">Sign Out</span></a
                 >
               </li>
             </ul>
@@ -615,7 +615,7 @@
             if (!shouldLogout) return
 
             localStorage.removeItem('userToken')
-            window.open('/', '_self')
+            window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
         }
     </script>
 </body>
