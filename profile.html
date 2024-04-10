@@ -239,10 +239,6 @@
             $('#address').text(response.address)
 
         })
-        
-        const username = new URLSearchParams(window.location.search).get('username');
-        document.getElementById('welcome-username').textContent = username;
-        sessionStorage.setItem('username', username);
 
         function Logout() {
 
@@ -262,6 +258,11 @@
                 link.href = url.toString();
             }
         }
+    </script>
+    <script>
+        const username = new URLSearchParams(window.location.search).get('username');
+        document.getElementById('welcome-username').textContent = username;
+        sessionStorage.setItem('username', username);
     </script>
     
 </body>
