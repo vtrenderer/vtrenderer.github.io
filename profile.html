@@ -35,7 +35,7 @@
               class="ti-menu ti-close"></i></a>
 
                     <div class="navbar-brand font-21">
-                        <a href="/index.html">
+                        <a href="/index.html" onclick="setUsernameFromStorage(this)">
               E-LMS
             </a>
                     </div>
@@ -59,7 +59,7 @@
                                 <i data-feather="chevron-down" class="svg-icon"></i></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-right user-dd animated flipInY">
-                                <a class="dropdown-item" href="/profile.html"><i data-feather="user"
+                                <a class="dropdown-item" href="/profile.html" onclick="setUsernameFromStorage(this)"><i data-feather="user"
                     class="svg-icon me-2 ms-1"></i> My
                   Profile</a>
                                 <a class="dropdown-item" href="javascript:void(0)"><i data-feather="mail"
@@ -74,10 +74,7 @@
                             </div>
                         </li>
                     </ul>
-                    <script>
-                        const username = new URLSearchParams(window.location.search).get('username');
-                        document.getElementById('welcome-username').textContent = username;
-                    </script>
+                    
                 </div>
             </nav>
         </header>
@@ -87,17 +84,17 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="/index.html" aria-expanded="false"><i data-feather="home"
+                            <a class="sidebar-link sidebar-link" href="/index.html" onclick="setUsernameFromStorage(this)" aria-expanded="false"><i data-feather="home"
                   class="feather-icon"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/profile.html" aria-expanded="false"><i data-feather="tag"
+                            <a class="sidebar-link" href="/profile.html" onclick="setUsernameFromStorage(this)" aria-expanded="false"><i data-feather="tag"
                     class="feather-icon"></i><span class="hide-menu">Profile </span></a>
                         </li>
 
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="/ticket-list.html" aria-expanded="false"><i data-feather="tag"
+                            <a class="sidebar-link" href="/ticket-list.html" onclick="setUsernameFromStorage(this)" aria-expanded="false"><i data-feather="tag"
                   class="feather-icon"></i><span class="hide-menu">Task </span></a>
                         </li>
 
@@ -124,7 +121,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item">
-                                        <a href="/index.html" class="text-muted">E-LMS</a>
+                                        <a href="/index.html" onclick="setUsernameFromStorage(this)" class="text-muted">E-LMS</a>
                                     </li>
                                     <li class="breadcrumb-item text-muted active" aria-current="page">
                                         Profile
@@ -242,6 +239,10 @@
             $('#address').text(response.address)
 
         })
+        
+        const username = new URLSearchParams(window.location.search).get('username');
+        document.getElementById('welcome-username').textContent = username;
+        sessionStorage.setItem('username', username);
 
         function Logout() {
 
@@ -252,7 +253,17 @@
             localStorage.removeItem('userToken')
             window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
         }
+
+        function setUsernameFromStorage(link) {
+            const username = sessionStorage.getItem('username');
+            if (username) {
+                const url = new URL(link.href);
+                url.searchParams.set('username', username);
+                link.href = url.toString();
+            }
+        }
     </script>
+    
 </body>
 
 </html>
