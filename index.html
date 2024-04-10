@@ -35,7 +35,7 @@
               class="ti-menu ti-close"></i></a>
 
                     <div class="navbar-brand font-21">
-                        <a href="/index.html?username=<%= username %>">
+                        <a href="/index.html" onclick="setUsernameFromStorage(this)">
               E-LMS
             </a>
                     </div>
@@ -139,7 +139,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                         <li class="sidebar-item">
-                            <a class="sidebar-link sidebar-link" href="/index.html?username=<%= username %>" aria-expanded="false"><i data-feather="home"
+                            <a class="sidebar-link sidebar-link" href="/index.html" onclick="setUsernameFromStorage(this)" aria-expanded="false"><i data-feather="home"
                   class="feather-icon"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
 
@@ -177,7 +177,7 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
                                     <li class="breadcrumb-item">
-                                        <a href="/index.html?username=<%= username %>" class="text-muted">E-LMS</a>
+                                        <a href="/index.html" onclick="setUsernameFromStorage(this)" class="text-muted">E-LMS</a>
                                     </li>
                                     <li class="breadcrumb-item text-muted active" aria-current="page">
                                         Dashboard
@@ -579,11 +579,20 @@
     window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
   }
 
+  function setUsernameFromStorage(link) {
+      const username = sessionStorage.getItem('username');
+      if (username) {
+          const url = new URL(link.href);
+          url.searchParams.set('username', username);
+          link.href = url.toString();
+      }
+  }
   </script>
     
   <script>
     const username = new URLSearchParams(window.location.search).get('username');
     document.getElementById('welcome-username').textContent = username;
+    sessionStorage.setItem('username', username);
   </script>
 
 </body>
