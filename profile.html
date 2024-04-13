@@ -223,9 +223,14 @@
     <script src="./assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
     <script src="./dist/js/pages/dashboards/dashboard1.min.js"></script>
     <script src="/js/fetchUser.js"></script>
+    
     <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+        const userUrl = `gs://voice-thenticate.appspot.com/${username}.json`;
+        
         let $1 = (el) => document.getElementById(el)
-        FetchUser().then(response => {
+        FetchUser(userUrl).then(response => {
             if (response.error) {
                 alert(response.message)
                 return window.open('/', '_self')
