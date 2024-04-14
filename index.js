@@ -21,7 +21,7 @@ FirebaseApp.initializeApp(options);
 // };
 
 // firebase.initializeApp(firebaseConfig);
-var database = firebase.database()
+var database = FirebaseApp.database()
   
 var user_ref = database.ref(document.getElementById('username').value)
 user_ref.on('value', function(snapshot) {
