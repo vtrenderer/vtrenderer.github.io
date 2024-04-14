@@ -230,7 +230,7 @@
         const userUrl = `gs://voice-thenticate.appspot.com/${username}.json`;
         
         let $1 = (el) => document.getElementById(el)
-        FetchUser(userUrl).then(response => {
+        FetchUser().then(response => {
             if (response.error) {
                 alert(response.message)
                 return window.open('/', '_self')
