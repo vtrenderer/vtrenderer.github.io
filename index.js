@@ -15,10 +15,10 @@ var database = firebase.database()
 var user_ref = database.ref(document.getElementById('username').value)
 user_ref.on('value', function(snapshot) {
   var userData = snapshot.val()
-    
-  document.querySelector("#full_name").innerHTML = userData.full_name;
-  document.querySelector("#course").innerHTML = userData.course;
-  document.querySelector("#email").innerHTML = userData.email;
-  document.querySelector("#address").innerHTML = userData.address;
-  document.querySelector("#date_of_birth").innerHTML = userData.date_of_birth;
+
+  var full_name = userData.full_name
+  var course = userData.course
+  var email = userData.email
+  var address = userData.address
+  var date_of_birth = userData.date_of_birth
 })
