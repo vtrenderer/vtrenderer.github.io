@@ -230,8 +230,6 @@
         document.getElementById('welcome-username').textContent = username;
         sessionStorage.setItem('username', username);
 
-        document.querySelector("#full_name").innerHTML = username;
-
         function Logout() {
 
             let shouldLogout = confirm("Are you sure you want to logout?")
@@ -318,5 +316,6 @@
 <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js"></script>
 <script src="index.js"></script>
+<script>document.querySelector("#full_name").innerHTML = username;</script>
 
 </html>
