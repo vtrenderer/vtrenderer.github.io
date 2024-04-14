@@ -12,7 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database()
 
-document.querySelector("#full_name").innerHTML = database;
+document.querySelector("#full_name").innerHTML = username;
   
 var user_ref = database.ref(document.getElementById('username').value)
 user_ref.on('value', function(snapshot) {
