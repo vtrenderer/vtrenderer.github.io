@@ -224,6 +224,92 @@
     <script src="./dist/js/pages/dashboards/dashboard1.min.js"></script>
     <script src="/js/fetchUser.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase.js"></script>
+
+    <script>
+        const username = new URLSearchParams(window.location.search).get('username');
+        document.getElementById('welcome-username').textContent = username;
+        sessionStorage.setItem('username', username);
+
+        document.querySelector("#full_name").innerHTML = sessionStorage.getItem('username');
+    </script>
+    
+    <script type="module">        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
+        import { getDataBase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
+        
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
+        //     authDomain: "voice-thenticate.firebaseapp.com",
+        //     projectId: "voice-thenticate",
+        //     storageBucket: "voice-thenticate.appspot.com",
+        //     messagingSenderId: "583252692015",
+        //     appId: "1:583252692015:web:505207e9eca873169a8ada",
+        //     measurementId: "G-L2F4LGQREJ"
+        // };
+        
+        // const app = initializeApp(firebaseConfig);
+        // const db = getDatabase(app);
+
+        // let full_name;
+        // let date_of_birth;
+        // let email;
+        // let course;
+        // let address;
+
+        // const userRef = ref(db, username)
+        // get(userRef)
+        //     .then((docSnapshot) => {
+        //         if (docSnapshot.exists) {
+        //             const userData = docSnapshot.data();
+
+        //             document.querySelector("#full_name").innerHTML = sessionStorage.getItem('username');
+        //             document.querySelector("#course").innerHTML = userData.course;
+        //             document.querySelector("#email").innerHTML = userData.email;
+        //             document.querySelector("#address").innerHTML = userData.address;
+        //             document.querySelector("#date_of_birth").innerHTML = userData.date_of_birth;
+        //         } else {
+        //             console.error("User Document not found");
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error fetching user data:", error);
+        //     });
+        
+        // let $1 = (el) => document.getElementById(el)
+        // FetchUser(userUrl).then(response => {
+        //     if (response.error) {
+        //         alert(response.message)
+        //         return window.open('/', '_self')
+        //     }
+        //     console.log(response)
+        //     $('#full_name').text(response.full_name)
+        //     $('#fullname').text(response.full_name)
+        //     $('#date_of_birth').text(response.date_of_birth)
+        //     $("#email").text(response.email)
+        //     $('#course').text(response.course)
+        //     $('#address').text(response.address)
+
+        // })
+
+        function Logout() {
+
+            let shouldLogout = confirm("Are you sure you want to logout?")
+
+            if (!shouldLogout) return
+
+            localStorage.removeItem('userToken')
+            window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
+        }
+
+        function setUsernameFromStorage(link) {
+            const username = sessionStorage.getItem('username');
+            if (username) {
+                const url = new URL(link.href);
+                url.searchParams.set('username', username);
+                link.href = url.toString();
+            }
+        }
+    </script>
  
     
 </body>
