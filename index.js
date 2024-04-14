@@ -1,4 +1,4 @@
-const firebaseConfig = {
+var firebaseConfig = {
   apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
   authDomain: "voice-thenticate.firebaseapp.com",
   databaseURL: "https://voice-thenticate-default-rtdb.firebaseio.com",
@@ -11,6 +11,7 @@ const firebaseConfig = {
 document.querySelector("#full_name").innerHTML = username;
 
 firebase.initializeApp(firebaseConfig);
+document.querySelector("#email").innerHTML = username;
 var database = firebase.database()
   
 var user_ref = database.ref(document.getElementById('username').value)
