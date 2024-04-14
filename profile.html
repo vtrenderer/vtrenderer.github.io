@@ -227,7 +227,8 @@
     
     
     <script>
-        var firebaseConfig = {
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
+        const firebaseConfig = {
             apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
             authDomain: "voice-thenticate.firebaseapp.com",
             projectId: "voice-thenticate",
@@ -236,13 +237,13 @@
             appId: "1:583252692015:web:505207e9eca873169a8ada",
             measurementId: "G-L2F4LGQREJ"
         };
-        firebase.initializeApp(firebaseConfig);
+        
+        const app = initializeApp(firebaseConfig);
 
-        const storageRef = firebase.storage().ref().child(`${sessionStorage.getItem('username')}.json`);
-        storageRef.getDownloadURL()
-            .then(url => fetch(url))
-            .then(response => response.json())
-            .then(data => localStorage.setItem("data", JSON.stringify(data)));
+        import { getDatabase, ref, child, onValue, get }
+        from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
+
+        const db = getDatabase();
         // const urlParams = new URLSearchParams(window.location.search);
         // const username = urlParams.get('username');
         const userUrl = `gs://voice-thenticate.appspot.com/${sessionStorage.getItem('username')}.json`;
@@ -263,7 +264,7 @@
 
         })
         // const full_name = sessionStorage.getItem('username');
-        document.querySelector("#full_name").innerHTML = data; 
+        document.querySelector("#full_name").innerHTML = db; 
         
 
         function Logout() {
