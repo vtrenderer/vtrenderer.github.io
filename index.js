@@ -1,15 +1,26 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
-  authDomain: "voice-thenticate.firebaseapp.com",
-  databaseURL: "https://voice-thenticate-default-rtdb.firebaseio.com",
-  projectId: "voice-thenticate",
-  storageBucket: "voice-thenticate.appspot.com",
-  messagingSenderId: "583252692015",
-  appId: "1:583252692015:web:9615861360f2bcc69a8ada",
-  measurementId: "G-KR9Z6EHF56"
-};
+FileInputStream serviceAccount =
+new FileInputStream("voice-thenticate-firebase-adminsdk-nsv2t-382664e757.json");
 
-firebase.initializeApp(firebaseConfig);
+FirebaseOptions options = new FirebaseOptions.Builder()
+  .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+  .setDatabaseUrl("https://voice-thenticate-default-rtdb.firebaseio.com")
+  .build();
+
+FirebaseApp.initializeApp(options);
+
+
+// var firebaseConfig = {
+//   apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
+//   authDomain: "voice-thenticate.firebaseapp.com",
+//   databaseURL: "https://voice-thenticate-default-rtdb.firebaseio.com",
+//   projectId: "voice-thenticate",
+//   storageBucket: "voice-thenticate.appspot.com",
+//   messagingSenderId: "583252692015",
+//   appId: "1:583252692015:web:9615861360f2bcc69a8ada",
+//   measurementId: "G-KR9Z6EHF56"
+// };
+
+// firebase.initializeApp(firebaseConfig);
 var database = firebase.database()
   
 var user_ref = database.ref(document.getElementById('username').value)
