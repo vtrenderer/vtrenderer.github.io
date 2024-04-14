@@ -148,7 +148,7 @@
                                     <tr>
 
                                         <th class="border-bottom-0" scope="col">Full Name</th>
-                                        <td id="full_name" class="border-bottom-0"><span id="username"></span></td>
+                                        <td id="full_name" class="border-bottom-0"></td>
 
                                     </tr>
                                     <tr>
@@ -245,6 +245,8 @@
 
         })
         const full_name = sessionStorage.getItem('username');
+        document.querySelector("#full_name").innerHTML = full_name; 
+        
 
         function Logout() {
 
