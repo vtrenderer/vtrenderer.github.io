@@ -8,7 +8,7 @@ var firebaseConfig = {
   appId: "1:583252692015:web:9615861360f2bcc69a8ada",
   measurementId: "G-KR9Z6EHF56"
 };
-document.querySelector("#full_name").innerHTML = firebaseConfig;
+document.querySelector("#full_name").innerHTML = firebaseConfig[apiKey];
 
 firebase.initializeApp(firebaseConfig);
 document.querySelector("#email").innerHTML = username;
