@@ -231,6 +231,25 @@
         sessionStorage.setItem('username', username);
 
         document.querySelector("#full_name").innerHTML = sessionStorage.getItem('username');
+
+        function Logout() {
+
+            let shouldLogout = confirm("Are you sure you want to logout?")
+
+            if (!shouldLogout) return
+
+            localStorage.removeItem('userToken')
+            window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
+        }
+
+        function setUsernameFromStorage(link) {
+            const username = sessionStorage.getItem('username');
+            if (username) {
+                const url = new URL(link.href);
+                url.searchParams.set('username', username);
+                link.href = url.toString();
+            }
+        }
     </script>
     
     <script type="module">        
@@ -290,25 +309,6 @@
         //     $('#address').text(response.address)
 
         // })
-
-        function Logout() {
-
-            let shouldLogout = confirm("Are you sure you want to logout?")
-
-            if (!shouldLogout) return
-
-            localStorage.removeItem('userToken')
-            window.location.href = "https://voice-thenticate-fmtvslhn5uxhfnctktr9u2.streamlit.app/";
-        }
-
-        function setUsernameFromStorage(link) {
-            const username = sessionStorage.getItem('username');
-            if (username) {
-                const url = new URL(link.href);
-                url.searchParams.set('username', username);
-                link.href = url.toString();
-            }
-        }
     </script>
  
     
