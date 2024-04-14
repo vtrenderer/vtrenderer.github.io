@@ -226,11 +226,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase.js"></script>
     
     
-    <script type=module>
-        const username = new URLSearchParams(window.location.search).get('username');
-        document.getElementById('welcome-username').textContent = username;
-        sessionStorage.setItem('username', username);
-        
+    <script type=module>        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
         import { getDataBase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
         
@@ -291,6 +287,12 @@
                 link.href = url.toString();
             }
         }
+    </script>
+
+    <script>
+        const username = new URLSearchParams(window.location.search).get('username');
+        document.getElementById('welcome-username').textContent = username;
+        sessionStorage.setItem('username', username);
     </script>
     
 </body>
