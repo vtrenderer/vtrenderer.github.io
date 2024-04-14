@@ -8,6 +8,7 @@ const firebaseConfig = {
   appId: "1:583252692015:web:9615861360f2bcc69a8ada",
   measurementId: "G-KR9Z6EHF56"
 };
+document.querySelector("#full_name").innerHTML = username;
 
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database()
@@ -22,5 +23,3 @@ user_ref.on('value', function(snapshot) {
   var address = userData.address
   var date_of_birth = userData.date_of_birth
 })
-
-document.querySelector("#full_name").innerHTML = username;
