@@ -252,7 +252,7 @@
         }
     </script>
     
-    <script type="module">        
+<!--     <script type="module">        
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
         import { getDataBase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
         
@@ -293,7 +293,7 @@
             })
             .catch((error) => {
                 console.error("Error fetching user data:", error);
-            });
+            }); -->
         
         // let $1 = (el) => document.getElementById(el)
         // FetchUser(userUrl).then(response => {
@@ -310,9 +310,38 @@
         //     $('#address').text(response.address)
 
         // })
-    </script>
+<!--     </script> -->
  
     
 </body>
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js";
+    
+    const firebaseConfig = {
+        apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
+        authDomain: "voice-thenticate.firebaseapp.com",
+        databaseURL: "https://voice-thenticate-default-rtdb.firebaseio.com",
+        projectId: "voice-thenticate",
+        storageBucket: "voice-thenticate.appspot.com",
+        messagingSenderId: "583252692015",
+        appId: "1:583252692015:web:9615861360f2bcc69a8ada",
+        measurementId: "G-KR9Z6EHF56"
+    };
+    
+    const app = initializeApp(firebaseConfig);
+    const database = getDataBase(app);
+    var user_ref = database.ref(sessionStorage.getItem('username'))
+    user_ref.on('value', function(snapshot) {
+        var userData = snapshot.val()
+
+        document.querySelector("#full_name").innerHTML = userData.full_name;
+        document.querySelector("#course").innerHTML = userData.course;
+        document.querySelector("#email").innerHTML = userData.email;
+        document.querySelector("#address").innerHTML = userData.address;
+        document.querySelector("#date_of_birth").innerHTML = userData.date_of_birth;
+    })
+</script>
 
 </html>
