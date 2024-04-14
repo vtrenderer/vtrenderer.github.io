@@ -224,7 +224,12 @@
     <script src="./dist/js/pages/dashboards/dashboard1.min.js"></script>
     <script src="/js/fetchUser.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.5/firebase.js"></script>
-    
+
+    <script>
+        const username = new URLSearchParams(window.location.search).get('username');
+        document.getElementById('welcome-username').textContent = username;
+        sessionStorage.setItem('username', username);
+    </script>
     
     <script>        
         // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase.js";
@@ -305,11 +310,7 @@
         }
     </script>
 
-    <script>
-        const username = new URLSearchParams(window.location.search).get('username');
-        document.getElementById('welcome-username').textContent = username;
-        sessionStorage.setItem('username', username);
-    </script>
+    
     
 </body>
 
