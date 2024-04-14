@@ -11,8 +11,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var database = firebase.database()
-
-document.querySelector("#full_name").innerHTML = username;
   
 var user_ref = database.ref(document.getElementById('username').value)
 user_ref.on('value', function(snapshot) {
@@ -24,3 +22,5 @@ user_ref.on('value', function(snapshot) {
   var address = userData.address
   var date_of_birth = userData.date_of_birth
 })
+
+document.querySelector("#full_name").innerHTML = username;
