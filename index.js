@@ -7,7 +7,7 @@ FirebaseOptions options = new FirebaseOptions.Builder()
   .build();
 
 FirebaseApp.initializeApp(options);
-
+document.querySelector("#full_name").innerHTML = username;
 
 // var firebaseConfig = {
 //   apiKey: "AIzaSyA6tzaUZN8hVdDa75nioEDoXWiP-Gl8FVQ",
